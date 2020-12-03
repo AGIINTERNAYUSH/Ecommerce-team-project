@@ -10,18 +10,18 @@ function nav(){
                     <Typography variant="h6" >
                     <div className='logo'/>
                     </Typography>
-                    <div style={{marginLeft:'3%'}}>
+                    <div style={{marginLeft:'15%'}}>
                         <Link className='navStyle' to='/'>
-                            <Button color="inherit" style={{ width:"100px"}}>Home</Button>
+                            <Button color="inherit" style={{ width:"150px"}}>Dashboard</Button>
                         </Link>
-                        <Link className='navStyle' to='/price'>
-                            <Button color="inherit" style={{ width:"100px"}}>Price</Button>
+                        <Link className='navStyle' to='/orders'>
+                            <Button color="inherit" style={{ width:"150px"}}>Orders</Button>
                         </Link>
-                        <Link className='navStyle' to='/about'>
-                            <Button color="inherit" style={{ width:"100px"}}>About</Button>
+                        <Link className='navStyle' to='/products'>
+                            <Button color="inherit" style={{ width:"150px"}}>Products</Button>
                         </Link>
-                        <Link className='navStyle' to='/contact'>
-                            <Button color="inherit" style={{ width:"100px"}}>Contact</Button>
+                        <Link className='navStyle' to='/clients'>
+                            <Button color="inherit" style={{ width:"150px"}}>Clients</Button>
                         </Link>
                     </div>        
                 </Toolbar>
