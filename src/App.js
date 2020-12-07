@@ -1,15 +1,14 @@
 import './App.css';
-import Nav from './Components/nav.js';
 import Dashboard from './Components/dashboard.js';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-
+import ClientRequest from './Components/client-request.js';
 function App() {
   return (
     <div>
       <Router>
-        <Nav />
         <Switch>
-          <Route path = "/" exact component={Dashboard}/>
+          <Route path = "/admin" exact component={Dashboard}/>
+          <Route path = "/admin/client-request" component={ClientRequest} />
         </Switch>
       </Router>
     </div>
