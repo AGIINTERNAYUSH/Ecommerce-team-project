@@ -46,8 +46,15 @@ export default class Contact extends Component {
                                                             var month = date.getMonth();
                                                             return (month == todayMonth);
                                                         });
-        const orderData5 = orderDatas.slice(0,5);
-        const productData5 = productDatas.slice(0,5);
+        var orderData5 = orderDatas;
+        if (orderDatas.length > 5){
+            orderData5 = orderDatas.slice(0,5);
+        }
+        var productData5 = productDatas;
+        if (productDatas.length > 5){
+            productData5 = productDatas.slice(0,5);
+        }
+        
         return(
             <div>
                 <Nav />
@@ -90,6 +97,7 @@ export default class Contact extends Component {
                                 
                             </Grid>
                             <Grid item xs={12} md={6}>
+                                <Link className='navStyle' to='/admin/order-request'>
                                 <Card>
                                     <CardActionArea>
                                         <h3 style={{textAlign:'center', color:'#0D0D9C', fontSize:'15px'}}>Order Request</h3>
@@ -119,6 +127,7 @@ export default class Contact extends Component {
                                         </CardContent>
                                     </CardActionArea>
                                 </Card>
+                                </Link>
                             </Grid>
                         </Grid> 
                         
