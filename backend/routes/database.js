@@ -16,6 +16,7 @@ router.route('/getOrders').get((req,res) => {
 
 router.route('/addOrder').post((req, res) => {
     const customer_name = req.body.customer_name;
+    const customer_number = req.body.customer_number;
     const product_name = req.body.product_name;
     const color = req.body.color; 
     const size = req.body.size;
@@ -23,8 +24,9 @@ router.route('/addOrder').post((req, res) => {
     const price = req.body.price; 
     const image = req.body.image;
     const delivery_address = req.body.delivery_address;
+    const status = req.body.status;
 
-    const newOrder = new Order({customer_name, product_name, color, size, quantity, price, image, delivery_address});
+    const newOrder = new Order({customer_name, customer_number, product_name, color, size, quantity, price, image, delivery_address, status});
 
     newOrder.save()
         .then(() => res.json('Order added!'));

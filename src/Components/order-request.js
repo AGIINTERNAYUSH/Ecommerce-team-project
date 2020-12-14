@@ -43,14 +43,15 @@ export default class Order_request extends Component {
                                     <TableRow >
                                         <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>S.N.</TableCell>
                                         <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Customer</TableCell>
-                                        <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Product Name</TableCell>
+                                        <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Number</TableCell>
+                                        <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Product</TableCell>
                                         <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Color</TableCell>
                                         <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Size</TableCell>
                                         <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Quantity</TableCell>
                                         <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Price</TableCell>
                                         <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Image</TableCell>
                                         <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Delivery Address</TableCell>
-                                        <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Status</TableCell>
+                                        <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Action</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -58,6 +59,7 @@ export default class Order_request extends Component {
                                         <TableRow>
                                             <TableCell >{index+1}</TableCell>
                                             <TableCell >{items.customer_name}</TableCell>
+                                            <TableCell >{items.customer_number}</TableCell>
                                             <TableCell >{items.product_name}</TableCell>
                                             <TableCell >{items.color}</TableCell>
                                             <TableCell >{items.size}</TableCell>
@@ -65,7 +67,12 @@ export default class Order_request extends Component {
                                             <TableCell >{items.price}</TableCell>
                                             <TableCell >{items.image}</TableCell>
                                             <TableCell >{items.delivery_address}</TableCell>
-                                            <TableCell>Pending</TableCell>
+                                            <TableCell>
+                                                <Button variant="contained" style={{ fontSize:'10px', fontWeight:'bold', width:'80px', heigt:'40px'}} color="primary" startIcon={<ThumbUpAltIcon style={{fontSize:'15px'}} />}>Accept</Button>
+                                                <br />
+                                                <br/>
+                                                <Button variant="contained" style={{ fontSize:'10px', fontWeight:'bold', width:'80px', heigt:'40px'}} color="secondary" startIcon={<ThumbDownAltIcon style={{fontSize:'15px'}} />}>Reject</Button>
+                                            </TableCell>
                                         </TableRow>
                                     )}
                                 </TableBody>

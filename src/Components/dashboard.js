@@ -42,10 +42,21 @@ export default class Contact extends Component {
         const {orderDatas, productDatas} = this.state;
         var todayDate = new Date();
         var todayMonth = todayDate.getMonth();
+        var todayDay = todayDate.getDate();
+        var totalSales = 0;
+        var todayYear = todayDate.getFullYear();
         const productThisMonth = productDatas.filter(d => {var date = new Date(d.createdAt);
                                                             var month = date.getMonth();
                                                             return (month == todayMonth);
                                                         });
+        var orderToday = orderDatas.filter(d => {var date = new Date(d.createdAt);
+                                                var month = date.getMonth();
+                                                var day = date.getDate();
+                                                var year = date.getFullYear();
+                                                return (day == todayDay && month == todayMonth && year == todayYear);
+                                            });
+
+        orderToday.map((items)=>totalSales=totalSales+items.price);
         var orderData5 = orderDatas;
         if (orderDatas.length > 5){
             orderData5 = orderDatas.slice(0,5);
@@ -137,10 +148,10 @@ export default class Contact extends Component {
                         <Card>
                             <CardActionArea>
                                 <h4 style={{marginLeft:'20px', color:'#0D0D9C', fontWeight:'normal'}}>Today's Total Sales:</h4>
-                                <h1 style={{color:'#0C077D', textAlign:'center', fontSize:'40px', fontFamily:'Lucida Console'}}>Rs 25,789</h1>
+                                <h1 style={{color:'#0C077D', textAlign:'center', fontSize:'40px', fontFamily:'Lucida Console'}}>{totalSales}</h1>
                                 <CardContent>
                                     <Divider style={{marginTop:'-20px'}}/>
-                                    <h3 style={{ color:'#0D0D9C', fontSize:'15px'}}>24 Total Orders</h3>
+                                    <h3 style={{ color:'#0D0D9C', fontSize:'15px'}}>{orderToday.length} Total Orders</h3>
                                 </CardContent>
                             </CardActionArea>
                         </Card>
