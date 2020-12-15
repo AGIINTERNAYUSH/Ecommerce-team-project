@@ -4,6 +4,7 @@ import Nav from './nav.js';
 import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import StorageIcon from '@material-ui/icons/Storage';
+import {Link} from 'react-router-dom';
 import ShopTwoIcon from '@material-ui/icons/ShopTwo';
 import { Card,CardContent, TableCell, TableContainer, Button, Table, TableHead, TableRow, TableBody} from '@material-ui/core';
 
@@ -45,7 +46,9 @@ export default class Order_request extends Component {
                 <Nav />
             <div className="container">
                 <ShopTwoIcon  style={{display:'inline-block', verticalAlign:'middle', color:'#0C077D', fontSize:"25px"}} /><h2 style={{display:'inline-block', verticalAlign:'middle', color:'#0C077D', marginLeft:"10px"}}>Orders</h2>
-                <Button variant="contained" style={{ fontSize:'12px', fontWeight:'bold', marginLeft: '50%'}} startIcon={<StorageIcon style={{fontSize:'15px'}} />}>{orderReq.length} items in Order Requests</Button>
+                <Link className='navStyle' to='/admin/order-request'>
+                <Button variant="contained" style={{ fontSize:'12px', fontWeight:'bold', marginLeft: '70%'}} startIcon={<StorageIcon style={{fontSize:'15px'}} />}>{orderReq.length} items in Order Requests</Button>
+                </Link>
                 <Card>
                     <CardContent>
                         <TableContainer>
