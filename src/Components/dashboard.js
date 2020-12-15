@@ -43,13 +43,14 @@ export default class Contact extends Component {
         var todayDate = new Date();
         var todayMonth = todayDate.getMonth();
         var todayDay = todayDate.getDate();
+        var orderReq = orderDatas.filter(d => {return (d.status == "unverified");});
         var totalSales = 0;
         var todayYear = todayDate.getFullYear();
-        const productThisMonth = productDatas.filter(d => {var date = new Date(d.createdAt);
+        const productThisMonth = productDatas.filter(d => {var date = new Date(d.updatedAt);
                                                             var month = date.getMonth();
                                                             return (month == todayMonth);
                                                         });
-        var orderToday = orderDatas.filter(d => {var date = new Date(d.createdAt);
+        var orderToday = orderDatas.filter(d => {var date = new Date(d.updatedAt);
                                                 var month = date.getMonth();
                                                 var day = date.getDate();
                                                 var year = date.getFullYear();
@@ -57,9 +58,9 @@ export default class Contact extends Component {
                                             });
 
         orderToday.map((items)=>totalSales=totalSales+items.price);
-        var orderData5 = orderDatas;
-        if (orderDatas.length > 5){
-            orderData5 = orderDatas.slice(0,5);
+        var orderReq5 = orderReq;
+        if (orderReq.length > 5){
+            orderReq5 = orderReq.slice(0,5);
         }
         var productData5 = productDatas;
         if (productDatas.length > 5){
@@ -124,7 +125,7 @@ export default class Contact extends Component {
                                             </TableRow>
                                             </TableHead>
                                             <TableBody>
-                                                {orderData5.map((items,index)=>
+                                                {orderReq5.map((items,index)=>
                                                     <TableRow>
                                                     <TableCell >{index+1}</TableCell>
                                                     <TableCell >{items.customer_name}</TableCell>

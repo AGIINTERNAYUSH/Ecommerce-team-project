@@ -4,6 +4,7 @@ import Nav from './nav.js';
 import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import StorageIcon from '@material-ui/icons/Storage';
+import ShopTwoIcon from '@material-ui/icons/ShopTwo';
 import { Card,CardContent, TableCell, TableContainer, Button, Table, TableHead, TableRow, TableBody} from '@material-ui/core';
 
 export default class Order_request extends Component {
@@ -38,11 +39,13 @@ export default class Order_request extends Component {
     render(){
         const {orderDatas} = this.state;
         const orderReq = orderDatas.filter(d => {return (d.status == "unverified");});
+        const orderDisplay = orderDatas.filter(d => {return (d.status != "unverified")});
         return(
             <div>
                 <Nav />
             <div className="container">
-                <StorageIcon style={{display:'inline-block', verticalAlign:'middle', color:'#0C077D', fontSize:"25px"}} /><h2 style={{display:'inline-block', verticalAlign:'middle', color:'#0C077D', marginLeft:"10px"}}>Incoming Order Requests</h2>
+                <ShopTwoIcon  style={{display:'inline-block', verticalAlign:'middle', color:'#0C077D', fontSize:"25px"}} /><h2 style={{display:'inline-block', verticalAlign:'middle', color:'#0C077D', marginLeft:"10px"}}>Orders</h2>
+                <Button variant="contained" style={{ fontSize:'12px', fontWeight:'bold', marginLeft: '50%'}} startIcon={<StorageIcon style={{fontSize:'15px'}} />}>{orderReq.length} items in Order Requests</Button>
                 <Card>
                     <CardContent>
                         <TableContainer>
@@ -59,11 +62,11 @@ export default class Order_request extends Component {
                                         <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Price</TableCell>
                                         <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Image</TableCell>
                                         <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Delivery Address</TableCell>
-                                        <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Action</TableCell>
+                                        <TableCell style={{fontWeight:'bold', color:'#0D0D9C'}}>Status</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {orderReq.map((items,index)=>
+                                    {orderDisplay.map((items,index)=>
                                         <TableRow>
                                             <TableCell >{index+1}</TableCell>
                                             <TableCell >{items.customer_name}</TableCell>
@@ -75,12 +78,7 @@ export default class Order_request extends Component {
                                             <TableCell >{items.price}</TableCell>
                                             <TableCell >{items.image}</TableCell>
                                             <TableCell >{items.delivery_address}</TableCell>
-                                            <TableCell>
-                                                <Button variant="contained" onClick={(e) => {this.acceptOrder(e, items)}} style={{ fontSize:'10px', fontWeight:'bold', width:'80px', heigt:'40px'}} color="primary" startIcon={<ThumbUpAltIcon style={{fontSize:'15px'}} />}>Accept</Button>
-                                                <br />
-                                                <br/>
-                                                <Button variant="contained" style={{ fontSize:'10px', fontWeight:'bold', width:'80px', heigt:'40px'}} color="secondary" startIcon={<ThumbDownAltIcon style={{fontSize:'15px'}} />}>Reject</Button>
-                                            </TableCell>
+                                            <TableCell>{items.status}</TableCell>
                                         </TableRow>
                                     )}
                                 </TableBody>

@@ -23,6 +23,7 @@ function nav(){
                         <Link className='navStyle' to='/admin/clients'>
                             <Button color="inherit" style={{ width:"150px"}}>Clients</Button>
                         </Link>
+                        
                     </div>        
                 </Toolbar>
             </AppBar>

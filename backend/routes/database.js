@@ -14,6 +14,16 @@ router.route('/getOrders').get((req,res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/updateOrder/:id').patch(async (req, res) => {
+    try{
+        const id = req.params.id;
+        const updates = req.body;
+        const result = await Order.findByIdAndUpdate(id, updates);
+        res.send(result);
+    }catch(error){
+        console.log(error.message);
+    }
+});
 router.route('/addOrder').post((req, res) => {
     const customer_name = req.body.customer_name;
     const customer_number = req.body.customer_number;
