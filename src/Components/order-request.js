@@ -21,6 +21,13 @@ export default class Order_request extends Component {
                 .then(res => console.log(res.data));
         window.location.reload(false);
     }
+    rejectOrder(e, items) {
+        e.preventDefault();
+        const id = items._id;
+        axios.patch('http://localhost:5000/database/updateOrder/'+id, {"status": "rejected"})
+                .then(res => console.log(res.data));
+        window.location.reload(false);
+    }
     componentDidMount = () => {
         this.getdata();
     }
@@ -79,7 +86,7 @@ export default class Order_request extends Component {
                                                 <Button variant="contained" onClick={(e) => {this.acceptOrder(e, items)}} style={{ fontSize:'10px', fontWeight:'bold', width:'80px', heigt:'40px'}} color="primary" startIcon={<ThumbUpAltIcon style={{fontSize:'15px'}} />}>Accept</Button>
                                                 <br />
                                                 <br/>
-                                                <Button variant="contained" style={{ fontSize:'10px', fontWeight:'bold', width:'80px', heigt:'40px'}} color="secondary" startIcon={<ThumbDownAltIcon style={{fontSize:'15px'}} />}>Reject</Button>
+                                                <Button variant="contained" onClick={(e) => {this.rejectOrder(e, items)}} style={{ fontSize:'10px', fontWeight:'bold', width:'80px', heigt:'40px'}} color="secondary" startIcon={<ThumbDownAltIcon style={{fontSize:'15px'}} />}>Reject</Button>
                                             </TableCell>
                                         </TableRow>
                                     )}
